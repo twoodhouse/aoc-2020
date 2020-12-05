@@ -7,6 +7,6 @@ df['req_b'] = df['range'].map(lambda x: int(x.split('-')[1]))
 df['req_a_match'] = df.apply(lambda row: row['password'][row['req_a']-1] == row['letter'], axis=1)
 df['req_b_match'] = df.apply(lambda row: len(row['password'])>=row['req_b'] and row['password'][row['req_b']-1] == row['letter'], axis=1)
 
-df['valid'] = df.apply(lambda row: row['req_a_match'] != row['req_b_match'], axis=1)
+df['valid'] = df['req_a_match'] != df['req_b_match']
 print(df)
 print(df['valid'].sum())
